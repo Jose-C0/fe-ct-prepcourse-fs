@@ -17,7 +17,7 @@ function mayoriaDeEdad(edad) {
    // Si tiene 18 años ó más debe retornar el string: "Allowed".
    // Caso contrario: "Not allowed".
    // Tu código:
-   if (edad > 18) return "Allowed";
+   if (edad >= 18) return "Allowed";
    else return "Not allowed";
 }
 
@@ -40,6 +40,29 @@ function saludo(idioma) {
    // Si "idioma" es "ingles", devuelve "Hello!".
    // Si "idioma" no es ninguno de los anteriores o es `undefined` devuelve "Hola!".
    // Tu código:
+   if (typeof(idioma) != "string") return "Hola!";
+   switch (idioma) {
+      case "aleman":
+         return "Guten Tag!";
+         break;
+   
+      case "mandarin":
+         return "Ni Hao!";
+         break;
+   
+      case "ingles":
+         return "Hello!";
+         break;
+   
+      case undefined:
+         return "Hola!";
+         break;
+   
+      default:
+         return  "Hola!";
+         break;
+   }
+
 }
 
 function colors(color) {
@@ -85,7 +108,7 @@ function estaEnRango(num) {
    // Retornar true si "num" es menor que 50 y mayor que 20.
    // De lo contrario, retornar false.
    // Tu código:
-   return (num < 50 || num > 20);
+   return num < 50 && num > 20;
 }
 
 function esEntero(num) {
@@ -99,17 +122,22 @@ function esEntero(num) {
 }
 
 function fizzBuzz(num) {
-   // Si "num" es divisible entre 3, retorna "fizz".
-   // Si "num" es divisible entre 5, retorna "buzz".
    // Si "num" es divisible entre 3 y 5 (ambos), retorna "fizzbuzz".
+   if (num % 3 === 0 && num % 5 === 0 ) return "fizzbuzz";
+   // Si "num" es divisible entre 3, retorna "fizz".
+   else if (num % 3 === 0) return "fizz";
+   // Si "num" es divisible entre 5, retorna "buzz".
+   else if (num % 5 === 0) return "buzz";
    // De lo contrario, retorna false.
-   // Tu código:
+   else  return false;
+   
+
 }
 
 function operadoresLogicos(num1, num2, num3) {
    // La función recibe tres números distintos.
    // Si num1 es mayor a num2 y a num3, y además es positivo, retornar ---> "Numero 1 es mayor y positivo".
-   if (Number.isSafeInteger(num1 > num2 && num1 > num3)) {
+   if (num1 > num2 && num1 > num3 && num1 > 0) {
       return "Numero 1 es mayor y positivo";
    }
    // Si alguno de los tres números es negativo, retornar ---> "Hay negativos".
@@ -130,8 +158,6 @@ function operadoresLogicos(num1, num2, num3) {
    }
    // Si no se cumple ninguna de las condiciones anteriores, retornar false.
    else return false;
-   // Tu código:
-   
 }
 
 function esPrimo(num) {
@@ -141,18 +167,34 @@ function esPrimo(num) {
    // [Pista 2]: puedes resolverlo utilizando un `bucle for`.
    // [Nota]: los números negativos, 0 y 1 NO son números primos.
    // Tu código:
+   if (num === 0 || num === 1 || num < 0) return false;
+
+   n = 0;
+
+   for (let index = 1; index <= num; index++) 
+   {
+
+      if (num % index === 0 ) n++ ;  
+      if (n === 3 ) return false;
+   }
+
+   return true;
 }
 
 function esVerdadero(valor) {
    // Si "valor" es verdadero retornar "Soy verdadero".
    // Caso contrario, retornar "Soy falso".
    // Tu código:
+   if (valor === true) return "Soy verdadero";
+   else return "Soy falso";
 }
 
 function tieneTresDigitos(num) {
    // Si el número recibido tiene tres dígitos retornar true.
    // Caso contrario, retornar false.
    // Tu código:
+   if (num.toString().length === 3) return true;
+   else return false;
 }
 
 function doWhile(num) {
@@ -160,6 +202,12 @@ function doWhile(num) {
    // Retornar el valor final.
    // Utilizar el bucle Do-While.
    // Tu código:
+   count = 1;
+   do {
+      num += 5;
+      count++;
+   } while (count <= 8);
+   return num;
 }
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/
